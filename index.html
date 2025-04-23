@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="da" translate="no" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="google" content="notranslate">
+    <title>FP9 FOLKESKOLENS PRØVER</title>
+    <link rel="stylesheet" href="css/style.css?k=1" type="text/css" />
+    <link rel="stylesheet" href="css/tools.css" type="text/css" />
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/uvm-top-logos.js?k=1"></script>
+    <script src="js/uvm_html5_opgave_samlet.js"></script>
+    <script src="js/jquery.mousewheel.js"></script>
+    <script type="text/javascript" src="js/flowtype.js"></script>
+    <script type="text/javascript" src="js/video-player-subtitles.js"></script>
+    <script type="text/javascript" src="js/browser-detect.js"></script>
+    <script type="text/javascript" src="js/video-player-samlet.js"></script>
+    <script type="text/javascript" src="js/audio-player.js"></script>
+    <script src="js/imageSlider.js"></script>
+    <script type="text/javascript" src="js/jquery.tooltip.js"></script>
+    <script type="text/javascript" src="js/builder.js?k=1"></script>
+    <script type="text/javascript" src="js/builder-validate.js?k=1"></script>
+    <script type="text/javascript" src="js/builder_timekeeper.js?k=1"></script>
+    <link rel="stylesheet" href="css/builder.css?k=1" type="text/css" />
+    <link rel="stylesheet" media="print" href="css/print.css?k=1">
+    <!--<script type="text/javascript" src="test/mathquill.js"></script>-->
+    <link rel="stylesheet" href="test/mathquill.css" type="text/css" />
+    <script type="text/javascript" src="js/crypto/aes.js"></script>
+    <script type="text/javascript" src="js/ckeditor_classic/build/ckeditor.js"></script>
+
+    <style>
+        .table {
+            border-spacing: 0;
+            border-collapse: collapse;
+        }
+
+        .table td,
+        .table th {
+            border: 1px solid #232323;
+            padding: 3px;
+        }
+        div#menu span:last-of-type {
+            position: relative;
+            bottom: 0;
+            border: none!important;
+            margin: 100px 0 0!important;
+        }
+    </style>
+    <script>
+        var typeWeight = {
+            "Dansk": 1,
+            "Engelsk": 2,
+            "Matematik": 3,
+            "Fysik/Kemi": 4,
+            "Ekstra": 5
+        };
+        function LoadFullPage(pageId, returnId) {
+            UVM.view.funcLoadContent(pageId, 1);
+            $(".wrapper").css("width", "100%");
+            $("#menuWrapper").css("display", "none");
+            $(".top").css("display", "none");
+            $('.PAGE').css("display", "none");
+            $('#fake-bottom-menu').css("display", "block");
+            $('#fake-bottom-menu a').data("returnId", returnId);
+            $('.PAGE[data-id="' + pageId + '"]').css({
+                "width": "100%",
+                "display": "block",
+                "padding": "0"
+            });
+        }
+        $(function () {
+            $('#fake-bottom-menu a').on("click", function () {
+                var returnId = $(this).data("returnId");
+                $(".wrapper").css("width", "");
+                $("#menuWrapper").css("display", "");
+                $(".top").css("display", "");
+                $('.PAGE').css("display", "none");
+                $('#fake-bottom-menu').css("display", "none");
+                $(window).trigger("resize");
+                UVM.view.funcLoadContent(returnId, 0);
+            });
+
+            $(document).on("click", '#29', function (e) {
+                e.preventDefault();
+                Builder.CallSave();
+                window.print();
+            });
+
+            function RunBuilder() {
+                if (typeof Builder === "undefined") {
+                    setTimeout(function () {
+                        RunBuilder();
+                    }, 10);
+                    return;
+                }
+                Builder.Init(function () {
+                    BuilderTimeKeeper.Init();
+                });
+            }
+            function CheckBrowser() {
+                if (typeof browserData === "undefined") {
+                    setTimeout(function () {
+                        CheckBrowser();
+                    }, 10);
+                    return;
+                }                
+            }
+            RunBuilder();
+            CheckBrowser();
+        });
+    </script>
+
+</head>
+
+<body data-taskid="" data-fag="fp9" style="visibility:hidden">
+    <div class="wrapper">
+
+        <!--End Top-->
+        <div class="main">
+            <div id="menuWrapper">
+                <div class="sub-title">
+                </div>
+                <div id="menu">
+                </div>
+
+                <!-- END MENU -->
+                <div id="taskNumber"></div>
+            </div>
+
+            <div id="content">
+                <div class="top">
+                    <div id="uvmLogo">
+                        <img src="images/uvm_logo_stuk.png" alt="" />
+                    </div>
+                </div>
+
+                <!--Forside-->
+                <div class="PAGE" data-id="1" data-parentid="0" data-layout="0" data-menutekst="Forside">
+                    <div style="height:95px;">&nbsp;</div>
+                    <div>
+                        <div class="titleColor">
+                            Dansk, skriftlig fremstilling
+                        </div>
+                        <br>
+                        <div class="content-text">
+                            <div class="headline">
+
+                                <div id="timeofexam">
+                                    Prøven varer 3,5 time (210 minutter)<br>
+                                </div>
+
+                                <div style="margin: 5rem 0rem 4rem;font-weight: 600;">
+                                    Du skal vælge en af disse opgaver:
+                                    <ol type="1" style="padding: 0 1.5rem;line-height: 3rem;">
+                                        <li>Hærværk</li>
+                                        <li>Skolen til debat</li>
+                                        <li>Fodbold, fællesskab og fankultur</li>
+                                        <li>Dit liv, mit liv, teenageliv</li>
+                                    </ol>
+                                </div>
+                                <i> Du skal skrive den valgte opgaves nummer og titel på din besvarelse.</i>
+                                <div id="dateofexam">
+                                    Torsdag den 2. maj 2024<br>
+                                    Kl. 9.00-12.30
+                                </div>
+                            </div>
+                            <div id="bodytext">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--Mellemrum-->
+                <div class="PAGE" data-id="2" data-parentid="0" data-layout="0" data-menutekst=""></div>
+
+                <!--Vejledning-->
+                <div class="PAGE" data-id="3" data-parentid="0" data-layout="0" data-menutekst="Før du skriver"
+                    style="display: table-cell; width: 955px;">
+                    <h1 style="font-size: 28px;">Før du skriver</h1><br>
+                    <p>Til eleven<br><br>
+                        Til denne prøve i skriftlig fremstilling har du adgang til internettet.
+                        <br><br>
+						Du må ikke kommunikere eller dele dine dokumenter med andre under prøven.
+                        <br><br>
+                        Hvis du i din tekst anvender informationer, citater, billeder, ressourcer fra internettet eller fra andre steder, skal du angive kilderne sidst i besvarelsen. Hvis du anvender kilder fra prøveoplægget, behøver du ikke at angive dem i din tekst.
+                        <br><br>
+                        Din tekst vurderes på, hvor godt du udfolder de tre vurderingsdimensioner <b>funktion, indhold og form</b> på en sammenhængende og meningsfuld måde i din tekst.
+                        <br><br>
+                        Se vurderingskriterierne nedenfor.
+                        <br><br>
+                        God arbejdslyst!
+                        <br><br>
+                    <h2 style="font-size: 24px;">Vurderingskriterier til eleven</h2><br>
+                    <b>Der gives én karakter baseret på en helhedsvurdering af tre dimensioner: funktion, indhold og
+                        form.</b>
+                    </p>
+                    <table cellspacing="2" cellpadding="5" class="border" border="1"
+                        style="border-collapse: collapse;width: 100%;">
+                        <tbody>
+                            <tr>
+                                <td style="width: 15.6739%;border-color: #000000;border-style: solid;padding: 10px;">
+                                    <strong>Vurderings-<br>dimension</strong>
+                                </td>
+                                <td style="width: 19.4643%;border-color: #000000;border-style: solid;padding: 10px;">
+                                    <strong>Vurderings-<br>område</strong>
+                                </td>
+                                <td style="width: 64.4715%;border-color: #000000;border-style: solid;padding: 10px;">
+                                    <strong>Vurderingsspørgsmål</strong>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2"
+                                    style="width: 15.6739%;border-color: #000000;border-style: solid;padding: 10px;">
+                                    <strong><span>Funktion</span></strong>
+                                </td>
+                                <td style="width: 19.4643%;border-color: #000000;border-style: solid;padding: 10px;">
+                                    Skrivesituation</td>
+                                <td style="width: 64.4715%;border-color: #000000;border-style: solid;padding: 10px;"><i>I
+                                        hvilken grad fungerer din tekst i den skrivesituation, som opgaven
+                                        beskriver?</i></td>
+                            </tr>
+                            <tr>
+                                <td style="width: 19.4643%;border-color: #000000;border-style: solid;padding: 10px;">
+                                    Opgavens krav</td>
+                                <td style="width: 64.4715%;border-color: #000000;border-style: solid;padding: 10px;"><i>I
+                                        hvilken grad opfylder du opgavens krav til afsender, modtager og
+                                        fremstillingsformer?</i></td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2"
+                                    style="width: 15.6739%;border-color: #000000;border-style: solid;padding: 10px;">
+                                    <strong><span>Indhold</span></strong>
+                                </td>
+                                <td style="width: 19.4643%;border-color: #000000;border-style: solid;padding: 10px;">Mening
+                                </td>
+                                <td style="width: 64.4715%;border-color: #000000;border-style: solid;padding: 10px;"><i>I
+                                        hvilken grad udtrykker din tekst et meningsfuldt indhold?</i></td>
+                            </tr>
+                            <tr>
+                                <td style="width: 19.4643%;border-color: #000000;border-style: solid;padding: 10px;">
+                                    Ressourcer</td>
+                                <td style="width: 64.4715%;border-color: #000000;border-style: solid;padding: 10px;"><i>I
+                                        hvilken grad bruger du opgaveforlægget, din egen faglige viden og
+                                        internettet i din tekst?</i></td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2"
+                                    style="width: 15.6739%;border-color: #000000;border-style: solid;padding: 10px;">
+                                    <strong><span>Form</span></strong>
+                                </td>
+                                <td style="width: 19.4643%;border-color: #000000;border-style: solid;padding: 10px;">
+                                    Tekstsammen-<br>hæng</td>
+                                <td style="width: 64.4715%;border-color: #000000;border-style: solid;padding: 10px;"><i>I
+                                        hvilken grad hænger din tekst sammen sprogligt, og er der velvalgte afsnit
+                                        og modaliteter?</i></td>
+                            </tr>
+                            <tr>
+                                <td style="width: 19.4643%;border-color: #000000;border-style: solid;padding: 10px;">Skrift
+                                    og andre modaliteter</td>
+                                <td style="width: 64.4715%;border-color: #000000;border-style: solid;padding: 10px;"><i>I hvilken grad bruger du tegnsætning, tekstbehandlingsprogrammets funktioner og ord, så det understøtter den situation, teksten skal bruges i?</i></td>
+                            </tr>
+                        </tbody>
+                    </table>
+					<br><br><br><br>
+                </div>
+
+                <!--Mellemrum-->
+                <div class="PAGE" data-id="4" data-parentid="0" data-layout="0" data-menutekst=""></div>
+
+                <!--Opgave 1-->
+                <div class="PAGE" data-id="5" data-parentid="0" data-layout="0" data-menutekst="1. Hærværk"
+                    style="display: table-cell; width: 955px;">
+                    <div class="box-group">
+                        <div class="group fill">
+                            <span style="padding:2px 6px;justify-content:space-between;">
+                                <h2 class="header-title">1. Hærværk</h2>
+                            </span>
+                        </div>
+                    </div>
+					<br>
+					<p><img pbyg-data-src-id="17147" src="assets/norreboulevardskole_1-17147.jpg" style="width: 95%;" alt="" data-mce-src="https://xn--prvebyggeren-wjb.dk/webdav/OvP1jGEfyLmBSR9r-hgjWQ/document/norreboulevardskole_1-17147.jpg"></p>
+					<p style="font-size: 90%;"><em>Foto: Tonny Birkekjær, tvmidtvest.dk</em></p>
+                    <p>På Nordbyskolen har de haft store problemer med hærværk. Som inspiration til din opgave skal du læse om det her:</p>
+					<table border="1" cellpadding="5" style="border-collapse: collapse; width: 15%; background-color: #c2e0f4;">
+						<tbody>
+							<tr>
+								<td style="text-align: center;" data-mce-style="text-align: center;"><a pbyg-data-href-id="17144" href="assets/22849_skoleleders_opraab-17144.pdf" target="_blank" rel="noopener" data-mce-href="https://xn--prvebyggeren-wjb.dk/webdav/LaswtMp9tkxXgemZoA2vMg/document/22849_skoleleders_opraab.pdf"><span style="font-size: 120%;" data-mce-style="font-size: 120%;"><img src="assets/downloads.png" alt="" /></span></a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<p style="font-size: 90%;"><em>Kilde: folketidende.dk</em></p>
+					<p>Forestil dig, at hærværk også er et problem på din skole. Skoleledelsen vil gerne inddrage eleverne i at finde gode løsninger, der modvirker hærværk. De vil gerne have elevernes bidrag til en kampagne, der kan motivere eleverne til at passe godt på skolen.</p>
+					<p>Du er udvalgt fra din årgang til at skrive et forslag til en kampagnetekst.</p>
+                    <table cellpadding="5" style="border-collapse: collapse; width: 99%; background-color: #c2e0f4;" border="1">
+                        <tbody>
+                            <tr>
+                                <td><p>Skriv teksten til kampagnen.</p>
+									<p>I din tekst skal du:</p>
+                                    <ul>
+                                        <li><em>beskrive,</em> hvordan hærværk er et problem på skolen</li>
+										<li><em>argumentere</em> for løsninger på problemet</li>
+										<li><em>anvende</em> flere modaliteter - skrift, farver og illustrationer</li>
+										<li><em>formulere</em> et slogan, der understøtter dit budskab.</li>
+                                    </ul>
+									Kampagneteksten skal deles ud til alle elever i udskolingen.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+					<br><br><br><br>
+                </div>
+
+                <!--Opgave 2-->
+                <div class="PAGE" data-id="6" data-parentid="0" data-layout="0"
+                    data-menutekst="2. Skolen til debat" style="display: table-cell; width: 955px;">
+                    <div class="box-group">
+                        <div class="group fill">
+                            <span style="padding:2px 6px;justify-content:space-between;">
+                                <h2 class="header-title">2. Skolen til debat</h2>
+                            </span>
+                        </div>
+                    </div>
+                    <br>
+                    <p><img pbyg-data-src-id="17920" src="assets/22849_billede_opg2-17920.jpg" style="width: 95%;" border="1 px solid black" alt="Danske Skoleelever" data-mce-src="https://xn--prvebyggeren-wjb.dk/webdav/OvP1jGEfyLmBSR9r-hgjWQ/document/22849_billede_opg2.jpg"></p>
+					<p style="font-size: 90%;"><em>Kilde: Danske Skoleelever/facebook.com</em></p>
+                    <p>Danske Skoleelever vil invitere til diskussion om fremtidens skole og opfordrer unge til at deltage i debatten på deres hjemmeside.</p>
+                    <p>Du vælger at bidrage med et debatindlæg, hvor du argumenterer for din holdning til en god skole.</p>
+                    <table cellpadding="5" style="border-collapse: collapse; width: 99%; background-color: #c2e0f4;" border="1" data-mce-style="border-collapse: collapse; width: 99%; background-color: #c2e0f4;">
+                        <tbody>
+                            <tr>
+                                <td><p>Skriv dit debatindlæg til Danske Skoleelever.</p>
+									<p>I din tekst skal du:</p>
+                                    <ul>
+										<li><em>fortælle</em> om en konkret skoleoplevelse, som et anslag i dit debatindlæg</li>
+										<li><em>redegøre</em> for positive og negative erfaringer med egen skolegang </li>
+										<li><em>argumentere</em> for forskellige ideer til, hvad der vil skabe en bedre skole</li>
+										<li><em>give</em> dit debatindlæg en rubrik.</li>
+                                    </ul>
+									<p>Debatindlægget skal udgives på danskeskoleelever.dk.</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br><br><br><br>
+                </div>
+
+                <!--Opgave 3-->
+                <div class="PAGE" data-id="7" data-parentid="0" data-layout="0" data-menutekst="3. Fodbold, fællesskab og fankultur"
+                    style="display: table-cell; width: 955px;">
+                    <div class="box-group">
+                        <div class="group fill">
+                            <span style="padding:2px 6px;justify-content:space-between;">
+                                <h2 class="header-title">3. Fodbold, fællesskab og fankultur</h2>
+                            </span>
+                        </div>
+                    </div>
+                    <br>
+					<p>Din klasse har en venskabsklasse i Norden. I skal skrive til klassen om forskellige emner, der giver indblik i det at være ung i Danmark. Du har fået til opgave at skrive om fodbold og fankultur. Det kan være lokalt eller nationalt.</p>
+					<p>Se videoen på DBU’s hjemmeside, som viser stemningen til en fodboldkamp:</p>
+                    <div style="width: 100%;">
+                        <div class="new-player mceNonEditable" contenteditable="false">
+                            <div class="new-player-video" style="width: 100%; height: 300px;"
+                                data-mce-style="width: 100%; height: 300px;">
+                                <video width="100%" height="300" src="assets/22849_opg_3-16277.mp4"
+                                    pbyg-data-src-id="16277">
+                                </video>
+                            </div>
+                            <!--<div class="new-player-footer" style="width: 600px;" data-mce-style="width: 600px;">
+                                <div class="new-player-title"></div>
+                                <br />
+                            </div>-->
+                            <div class="new-player-footer" style="width: 100%;" data-mce-style="width: 100%;">
+								<div class="new-player-title"><br></div>
+                            </div>
+                        </div>
+                    </div>
+					<p style="font-size: 90%;"><em>Kilde: dbutv.dk</em></p>
+                    <table cellpadding="5" style="border-collapse: collapse; width: 99%; background-color: #c2e0f4;" border="1">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <p>Skriv et brev til jeres venskabsklasse.</p>
+                                    <p>Som forberedelse skal du se videoen fra en fodboldkamp og søge viden om fodbold, fællesskab og fankultur og inddrage det i din tekst.</p>
+                                    <p>I din tekst skal du:</p>
+                                    <ul>
+                                        <li><em>beskrive</em> stemningen til en fodboldkamp</li>
+										<li><em>fortælle</em> om din egen fascination af fodbold</li>
+                                        <li><em>reflektere</em> over, hvorfor fodboldkampe kan skabe følelsen af fællesskab, glæde og oplevelser.</li>
+                                    </ul>
+									<p>Brevet skal sendes som mail til jeres venskabsklasse.</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br><br><br><br>               
+				</div>
+
+                <!--Opgave 4-->
+                <div class="PAGE" data-id="8" data-parentid="0" data-layout="0" data-menutekst="4. Dit liv, mit liv, teenageliv"
+                    style="display: table-cell; width: 955px;">
+                    <div class="box-group">
+                        <div class="group fill">
+                            <span style="padding:2px 6px;justify-content:space-between;">
+                                <h2 class="header-title">4. Dit liv, mit liv, teenageliv</h2>
+                            </span>
+                        </div>
+                    </div>
+                    <br>
+                    <p>Et forlag vil udgive en antologi med titlen <em>Dit liv, mit liv</em>, teenageliv, der i ord og billeder skaber et portræt af teenagetiden til læsere i alle aldre. Forlaget ønsker unges fortællinger til seks billeder af Lisa Aisato.</p>
+					<p>Du vælger at bidrage med en fortælling.</p>
+					<p>Se billederne her:</p>
+					<table border="1" style="border-collapse: collapse; width: 99%;">
+						<tbody>
+							<tr>
+								<td style="width: 50%;"><a pbyg-data-href-id="17157" href="assets/22849_livet_illustreret-17157.pdf" target="_blank" rel="noopener" data-mce-href="https://xn--prvebyggeren-wjb.dk/webdav/vUv9e06isLba-aeLuTr2Sg/document/22849_livet_illustreret.pdf"><img pbyg-data-src-id="16542" src="assets/22849_billede1-16542.jpg" style="width: 100%;" alt="" data-mce-src="https://xn--prvebyggeren-wjb.dk/webdav/30t0iPNDwUQsVSvMCYG7jQ/document/22849_billede1.jpg"></a></td>
+								<td><a pbyg-data-href-id="17157" href="assets/22849_livet_illustreret-17157.pdf" target="_blank" rel="noopener" data-mce-href="https://xn--prvebyggeren-wjb.dk/webdav/vUv9e06isLba-aeLuTr2Sg/document/22849_livet_illustreret.pdf"><img pbyg-data-src-id="16543" src="assets/22849_billede2-16543.jpg" style="width: 100%;" alt="" data-mce-src="https://xn--prvebyggeren-wjb.dk/webdav/ho-I0_glMhYcRqMRcnNYKg/document/22849_billede2.jpg"></a></td>
+							</tr>
+							<tr>
+								<td style="width: 50%;"><a pbyg-data-href-id="17157" href="assets/22849_livet_illustreret-17157.pdf" target="_blank" rel="noopener" data-mce-href="https://xn--prvebyggeren-wjb.dk/webdav/vUv9e06isLba-aeLuTr2Sg/document/22849_livet_illustreret.pdf"><img pbyg-data-src-id="16544" src="assets/22849_billede3-16544.jpg" style="width: 100%;" alt="" data-mce-src="https://xn--prvebyggeren-wjb.dk/webdav/OcmXvCM9yqrhHC1z8-3XQA/document/22849_billede3.jpg"></a></td>
+								<td><a pbyg-data-href-id="17157" href="assets/22849_livet_illustreret-17157.pdf" target="_blank" rel="noopener" data-mce-href="https://xn--prvebyggeren-wjb.dk/webdav/vUv9e06isLba-aeLuTr2Sg/document/22849_livet_illustreret.pdf"><img pbyg-data-src-id="16545" src="assets/22849_billede4-16545.jpg" style="width: 100%;" alt="" data-mce-src="https://xn--prvebyggeren-wjb.dk/webdav/g-dPvst5MxRgAl8gVO4fcg/document/22849_billede4.jpg"></a></td>
+							</tr>
+							<tr>
+								<td style="width: 50%;"><a pbyg-data-href-id="17157" href="assets/22849_livet_illustreret-17157.pdf" target="_blank" rel="noopener" data-mce-href="https://xn--prvebyggeren-wjb.dk/webdav/vUv9e06isLba-aeLuTr2Sg/document/22849_livet_illustreret.pdf"><img pbyg-data-src-id="16546" src="assets/22849_billede5-16546.jpg" style="width: 100%;" alt="" data-mce-src="https://xn--prvebyggeren-wjb.dk/webdav/rJVT-_EXxzKDoXLRRqspyg/document/22849_billede5.jpg"></a></td>
+								<td><a pbyg-data-href-id="17157" href="assets/22849_livet_illustreret-17157.pdf" target="_blank" rel="noopener" data-mce-href="https://xn--prvebyggeren-wjb.dk/webdav/vUv9e06isLba-aeLuTr2Sg/document/22849_livet_illustreret.pdf"><img pbyg-data-src-id="16547" src="assets/22849_billede6-16547.jpg" style="width: 100%;" alt="" data-mce-src="https://xn--prvebyggeren-wjb.dk/webdav/0iohn8K4Kko6QCUpz3NUHw/document/22849_billede6.jpg"></a></td>
+							</tr>
+						</tbody>
+					</table>
+					<p style="font-size: 90%;"><em><strong>Billedtekster:</strong></em></p>
+					<p style="font-size: 90%;">
+						<em>Øverst til venstre: ... prøvede konfirmationstøj og begyndte at bruge deo.
+					<br>
+					Øverst til højre: Vi forandrede os.
+					<br>
+					Midt til venstre: Nogle dage gjorde vi oprør.
+					<br>
+					Midt til højre: Somme tider var verden overvældende,
+					<br>
+					Nederst til venstre: andre gange lå den for dine fødder.
+					<br>
+					Nederst til højre: Jeg håber, vingerne bærer.
+					<br><br>
+					Kilde: Uddrag fra "Livet illustreret" af Lisa Aisato, forlag: Straarup &amp; Co.</em>
+					</p>
+					<p>Fortæl med udgangspunkt i et eller flere af billederne om tanker og oplevelser som teenager.</p>
+					<p>Fortællingen kan være opdigtet, noget, du selv har oplevet, eller en blanding af begge dele.</p>
+                    <table cellpadding="5" style="border-collapse: collapse; width: 99%; background-color: #c2e0f4;" border="1">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <p>Du skal skrive to tekster: en fortælling om teenagelivet til antologien og et kort følgebrev til forlaget.</p>
+                                    <p>Fortællingen skal tage udgangspunkt i et eller flere af billederne og have:</p>
+                                    <ul>
+                                        <li>en 3. -personsfortæller</li>
+                                        <li>et højdepunkt</li>
+                                        <li>en slutning formuleret som et spørgsmål til læseren af antologien</li>
+										<li>en titel.</li>
+                                    </ul>
+									<p>I dit følgebrev skal du:</p>
+                                    <ul>
+                                        <li><em>præsentere</em> dig selv og din fortælling</li>
+										<li><em>beskrive</em> samspillet mellem dit valg af billede(r) og din fortælling.</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br><br><br><br>
+                </div>
+			
+				<div class="PAGE" data-id="9999" data-parentid="0" data-layout="0" data-menutekst="Prøvesættet er underlagt ophavsret. Læs mere her."
+                    style="display: table-cell; width: 955px;">
+					<div class="ophavsret" style="border: solid black 1px; padding: 25px 25px 10px; font-style: italic; line-height: 1.4;" data-mce-style="border: solid black 1px; padding: 25px 25px 10px; font-style: italic; line-height: 1.4;">
+                        <h2><i>Det følgende er ikke en del af prøven:</i></h2>
+                        <p><i>Dette prøvesæt er omfattet af ophavsretten, jf. ophavsretslovens &sect; 1.<br><br>
+                        Prøvesættet må alene anvendes til den på prøvesættet anførte prøve.<br><br>
+                        Al anden anvendelse af prøvesættet, herunder visning eller deling f.eks. via internettet, sociale medier, portaler og bøger, udgør en krænkelse af Børne- og Undervisningsministeriets og evt. tredjemands ophavsret og er ikke tilladt.<br><br>
+                        Overtrædelse af ophavsretten kan være erstatningspådragende og/eller strafbart.<br><br>
+                        Prøvesættet kan dog, efter at prøven er afsluttet, anvendes til undervisningsbrug på uddannelser m.v. omfattet af den lovgivning, som Styrelsen for Undervisning og Kvalitet administrerer.</i></p>
+					</div>
+					<br><br><br><br>
+				</div>
+            </div> <!-- END CONTENT -->
+        </div> <!-- END MAIN -->
+        <div id="bottomMenu"></div>
+    </div>
+</body>
+
+</html>
